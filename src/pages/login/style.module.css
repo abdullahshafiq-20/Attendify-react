@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root
+{
+    --colorScheme: #2563EB;
+    --bgcolor:#020817;
+    --borderColr: rgba(30, 41, 59, 1); 
+    --textColor:#F8FAFC;
+    --HoverColor:#1E293B;
+    --HoverColor2: 
+}
+
+
+body{
+    width: 100%; /* Ensure body takes up full width */
+    height: 100vh; /* Ensure body takes up full height */
+    border: 1px solid black;
+    color: var(--textColor);
+    background: var(--bgcolor);
+}
+
+.containerlogin {
+    width: 100%;
+    display: block;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+}
+.page1
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 11rem;
+
+}
+.page1 h1{
+    font-size: 5rem;
+
+}
+.page1 p{
+    width: 50%;
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+
+.page2 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page1 {
+    /* border: 1px solid green; */
+}
+
+.page2 {
+    /* border: 1px solid blue; */
+}
+
+.page2 .loginform
+{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--borderColr);
+    border-radius: 8px;
+    padding: 2rem 0;
+}
+.page2 .loginform h2{
+    margin: 1rem 0 0.5 0;
+    font-size: 2rem;
+
+}
+.page2 .loginform .inputfield
+{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0.5rem 0;
+    gap: 0.5rem;
+    
+}
+.page2 .loginform .inputfield p{
+    font-size: 1rem;
+    font-weight: 600;
+}
+.page2 .difauth
+{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+
+}
+.page2 .difauth button{
+
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    background-color: transparent;
+    border: 1px solid var(--borderColr);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--textColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+
+}
+.page2 .difauth button:hover{
+    background: var(--HoverColor);
+
+}
+
+
+.page2 .loginform input[type="text"],
+.page2 .loginform input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid var(--borderColr);/* Set initial border to transparent */
+    outline: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.page2 .loginform input[type="text"]:focus,
+.page2 .loginform input[type="password"]:focus {
+    /* Styling for focused input fields */
+    outline:none ; /* Removing default focus outline */
+    border: 0.093rem solid var(--colorScheme) ; /* Adjust border color for focus */
+}
+.page2 .loginform .submitbtn
+{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+
+}
+
+.page2 .loginform .submitbtn button
+{
+    width: 100%;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    background-color: var(--colorScheme);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--textColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
