@@ -26,7 +26,7 @@ body{
 
 .containerlogin {
     width: 100%;
-    display: block;
+    /* display: block; */
     /* border: 1px solid red; */
     display: flex;
     justify-content: center;
@@ -54,6 +54,15 @@ body{
     width: 50%;
     font-size: 2rem;
     margin: 0.5rem 0;
+}
+.loginform form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 1px solid red; */
+
 }
 
 .page2 {
@@ -121,7 +130,7 @@ body{
 }
 .page2 .difauth button{
 
-    width: 20%;
+    width: 50%;
     padding: 0.5rem;
     margin: 1rem 0;
     background-color: transparent;
@@ -220,7 +229,7 @@ body{
     text-decoration: underline;
 }
 
-@media screen and (max-width: 868px)
+@media screen and (max-width: 1000px)
 {
     .containerlogin
     {
@@ -287,6 +296,6 @@ body{
     }
     .page2 .difauth button
     {
-        width: 60%;
+        width: 70%;
     }
 }

@@ -53,7 +53,13 @@ body{
     font-size: 2rem;
     margin: 0.5rem 0;
 }
-
+.loginform form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .page2 {
     width: 100%;
     height: 100vh;
@@ -104,7 +110,7 @@ body{
 }
 .page2 .difauth
 {
-    width: 20%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -279,6 +285,6 @@ body{
     }
     .page2 .difauth
     {
-        width: 30%;
+        width: 70%;
     }
 }
