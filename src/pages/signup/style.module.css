@@ -219,3 +219,74 @@ body{
     font-weight: 600;
     text-decoration: underline;
 }
+
+@media screen and (max-width: 868px)
+{
+    .containerlogin
+    {
+       width: 100%;
+       height: 100vh;
+         display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 3rem;
+    }
+    .page1{
+        width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 0rem;
+    /* border: 1px solid red; */
+    }
+    .page1 h1{
+        font-size: 3rem;
+        border-bottom: 3px solid var(--colorScheme);
+    }
+    .page1 p 
+    {
+        display: none;
+    }.page2
+    {
+        /* border: 1px solid red; */
+        /* padding: 0; */
+        height: auto;
+    }
+    .page2 .loginform
+    {
+        width: 100%;
+        height: auto;
+    }
+    .page2 .loginform p 
+    {
+        font-size: 0.8rem;
+    }
+    .page2 .loginform h2{
+        margin: 1rem 0 0.5 0;
+        font-size: 1.5rem;
+    
+    }
+    .page2 .loginform .inputfield
+    {
+        width: 80%;
+    }
+    .page2 .loginform .inputfield p{
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    .page2 .loginform .submitbtn
+    {
+        width: 80%;
+    }
+    .page2 .difauth
+    {
+        width: 80%;
+    }
+    .page2 .difauth button
+    {
+        width: 60%;
+    }
+}

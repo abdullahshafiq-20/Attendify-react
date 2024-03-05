@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./style.module.css";
 import { FaGoogle } from "react-icons/fa";
+import { Link as RouterLink } from "react-router-dom";
+
 
 export const Signup = () => {
   return (
@@ -43,7 +45,7 @@ export const Signup = () => {
               <button>Signup</button>
             </div>
             <div className={styles.haveanAcount}>
-              <p>Already have an account? <a href="#">Login</a></p>
+              <p>Already have an account? <RouterLink to="/">Login</RouterLink></p>
             </div>
           </div>
           
