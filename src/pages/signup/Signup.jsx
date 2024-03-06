@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { Toast } from "../../utils/Toast";
 
 export const Signup = ( {onSignup }) => {
   const [name, setName] = useState("");
@@ -26,6 +27,7 @@ export const Signup = ( {onSignup }) => {
         const user = result.user;
         const userdata= {name, email, password}
         console.log(userdata);
+        Toast("Signup Successful", "success");
         onSignup(userdata);
         // IdP data available using getAdditionalUserInfo(result)
         // ...
@@ -39,6 +41,7 @@ export const Signup = ( {onSignup }) => {
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // Handle error here or provide user feedback
+        Toast(errorMessage, "error");
         console.error(error);
       });
   };
@@ -50,13 +53,14 @@ export const Signup = ( {onSignup }) => {
         // Signed up
         const user = userCredential.user;
         console.log(user, "user");
-        
+        Toast("Signup Successful", "success");
         navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // Handle error here or provide user feedback
+        Toast(errorMessage, "error");
         console.error(error);
       });
   };

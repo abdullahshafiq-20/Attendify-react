@@ -1,11 +1,20 @@
-import { ChevronFirst, ChevronLast, Construction, MoreVertical } from "lucide-react";
+import {
+  ChevronFirst,
+  ChevronLast,
+  Construction,
+  MoreVertical,
+} from "lucide-react";
 import { createContext, useContext, useState, useEffect } from "react";
-
+import { FiLogOut } from "react-icons/fi";
+import { Link as RouterLink } from "react-router-dom";
 const SidebarContext = createContext();
 
-export default function Sidebar({ children, user}) {
+export default function Sidebar({ children, user }) {
   const [expanded, setExpanded] = useState(true);
 
+  const removeLocalStorage = () => {
+    window.localStorage.removeItem("user");
+  };
 
   return (
     <>
@@ -43,7 +52,14 @@ export default function Sidebar({ children, user}) {
                   {user.email}
                 </span>
               </div>
-              <MoreVertical size={20} />
+              <RouterLink to="/">
+                <div className="mr-[5px] p-1.5 rounded-lg hover:bg-colorScheme flex justify-center items-center">
+                  <FiLogOut size={22} style={{ transform: "rotate(180deg)" }} 
+                  
+                  onClick={removeLocalStorage}
+                  />
+                </div>
+              </RouterLink>
             </div>
           </div>
         </nav>

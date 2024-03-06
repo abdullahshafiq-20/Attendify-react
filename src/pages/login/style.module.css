@@ -46,12 +46,14 @@ body{
 .page1 h1{
     font-size: 5rem;
     border-bottom: 3px solid var(--colorScheme);
+    font-weight: 900;
 
 }
 .page1 p{
     width: 50%;
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin: 0.5rem 0;
+    font-weight: 500;
 }
 .loginform form{
     width: 100%;
@@ -91,6 +93,7 @@ body{
 .page2 .loginform h2{
     margin: 1rem 0 0.5 0;
     font-size: 2rem;
+    font-weight: 700;
 
 }
 .page2 .loginform .inputfield
@@ -286,5 +289,10 @@ body{
     .page2 .difauth
     {
         width: 70%;
+    }
+    .haveanAcount p
+    {
+        width: 80%;
+        font-size: 0.8rem;
     }
 }

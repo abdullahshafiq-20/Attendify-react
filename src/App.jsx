@@ -3,6 +3,8 @@ import "./App.css";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup/Signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { Slide, ToastContainer } from "react-toastify";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 
@@ -18,6 +20,27 @@ function App() {
           <Route path="/Dashboard" element={<Dashboard response={response} />} />
         </Routes>
       </Router>
+
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3500}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Slide}
+        
+      />
+
+
+
+
+
     </>
   );
 }

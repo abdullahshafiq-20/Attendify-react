@@ -14,3 +14,8 @@
 :root {
   font-family: "satoshi";
 }
+@media only screen and (max-width: 768px) {
+  .Toastify__toast-container {
+    width: 50%; /* Adjust the width as needed */
+  }
+}

@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { Toast } from "../../utils/Toast";
 
 
 export const Login = ({setResponse}) => {
@@ -29,7 +30,8 @@ export const Login = ({setResponse}) => {
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
-        setResponse(user);        
+        setResponse(user);
+        Toast("Login Successful", "success");        
         navigate("/Dashboard");
       })
       .catch((error) => {
@@ -42,6 +44,7 @@ export const Login = ({setResponse}) => {
         const credential = GoogleAuthProvider.credentialFromError(error);
         // Handle error here or provide user feedback
         console.error(error);
+        Toast(errorMessage, "error");
       });
   };
 
@@ -57,12 +60,14 @@ export const Login = ({setResponse}) => {
         const user = userCredential.user;
         console.log("dasboard page", user);
         setResponse(user);
+        Toast("Login Successful", "success");
         navigate("/Dashboard");
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        Toast(errorMessage, "error");
       });
   };
   return (
@@ -70,7 +75,7 @@ export const Login = ({setResponse}) => {
       <div className={styles.containerlogin}>
         <div className={styles.page1}>
           <h1>Attendify.</h1>
-          <p>Count you students In, Not out.</p>
+          <p>Count your students In, <br/>Not out.</p>
         </div>
         <div className={styles.page2}>
           <div className={styles.loginform}>

@@ -3,20 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-:root
-{
+
+:root {
     --colorScheme: #2563EB;
-    --bgcolor:#020817;
-    --borderColr: rgba(30, 41, 59, 1); 
-    --textColor:#F8FAFC;
-    --HoverColor:#1E293B;
-    --HoverColor2: 
+    --bgcolor: #020817;
+    --borderColr: rgba(30, 41, 59, 1);
+    --textColor: #F8FAFC;
+    --HoverColor: #1E293B;
+    --HoverColor2:
 }
 
 
-body{
-    width: 100%; /* Ensure body takes up full width */
-    height: 100vh; /* Ensure body takes up full height */
+body {
+    width: 100%;
+    /* Ensure body takes up full width */
+    height: 100vh;
+    /* Ensure body takes up full height */
     /* border: 1px solid black; */
     color: var(--textColor);
     background: var(--bgcolor);
@@ -34,8 +36,8 @@ body{
     height: 100vh;
     padding: 2rem;
 }
-.page1
-{
+
+.page1 {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -45,17 +47,20 @@ body{
     padding-top: 11rem;
 
 }
-.page1 h1{
+
+.page1 h1 {
     font-size: 5rem;
     border-bottom: 3px solid var(--colorScheme);
 
 }
-.page1 p{
+
+.page1 p {
     width: 50%;
     font-size: 2rem;
     margin: 0.5rem 0;
 }
-.loginform form{
+
+.loginform form {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -82,8 +87,7 @@ body{
     /* border: 1px solid blue; */
 }
 
-.page2 .loginform
-{
+.page2 .loginform {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -93,18 +97,19 @@ body{
     border-radius: 8px;
     padding: 2rem 0;
 }
-.page2 .loginform h2{
+
+.page2 .loginform h2 {
     margin: 1rem 0 0.5 0;
     font-size: 2rem;
 
 }
-.page2 .loginform h2 span
-{
+
+.page2 .loginform h2 span {
     color: var(--colorScheme);
     font-weight: 800;
 }
-.page2 .loginform .inputfield
-{
+
+.page2 .loginform .inputfield {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -112,14 +117,15 @@ body{
     align-items: flex-start;
     margin: 0.5rem 0;
     gap: 0.5rem;
-    
+
 }
-.page2 .loginform .inputfield p{
+
+.page2 .loginform .inputfield p {
     font-size: 1rem;
     font-weight: 600;
 }
-.page2 .difauth
-{
+
+.page2 .difauth {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -128,7 +134,8 @@ body{
     gap: 1rem;
 
 }
-.page2 .difauth button{
+
+.page2 .difauth button {
 
     width: 50%;
     padding: 0.5rem;
@@ -146,7 +153,8 @@ body{
     font-weight: 500;
 
 }
-.page2 .difauth button:hover{
+
+.page2 .difauth button:hover {
     background: var(--HoverColor);
 
 }
@@ -158,22 +166,26 @@ body{
     padding: 0.8rem;
     border-radius: 5px;
     background: transparent;
-    border: 1px solid var(--borderColr);/* Set initial border to transparent */
+    border: 1px solid var(--borderColr);
+    /* Set initial border to transparent */
     outline: none;
     color: white;
     font-size: 1rem;
     font-weight: 500;
-    transition: border 0.1s ease; /* Add transition for smoother change in border color */
+    transition: border 0.1s ease;
+    /* Add transition for smoother change in border color */
 }
 
 .page2 .loginform input[type="text"]:focus,
 .page2 .loginform input[type="password"]:focus {
     /* Styling for focused input fields */
-    outline:none ; /* Removing default focus outline */
-    border: 0.093rem solid var(--colorScheme) ; /* Adjust border color for focus */
+    outline: none;
+    /* Removing default focus outline */
+    border: 0.093rem solid var(--colorScheme);
+    /* Adjust border color for focus */
 }
-.page2 .loginform .submitbtn
-{
+
+.page2 .loginform .submitbtn {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -183,8 +195,7 @@ body{
 
 }
 
-.page2 .loginform .submitbtn button
-{
+.page2 .loginform .submitbtn button {
     width: 100%;
     padding: 0.8rem;
     margin: 1rem 0;
@@ -200,8 +211,8 @@ body{
     font-size: 1rem;
     font-weight: 500;
 }
-.haveanAcount
-{
+
+.haveanAcount {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -210,92 +221,100 @@ body{
     text-align: right;
     margin-top: -1.5rem;
 }
-.haveanAcount p
-{
+
+.haveanAcount p {
     width: 70%;
     font-size: 0.9rem;
     font-weight: 500;
 }
-.haveanAcount p a
-{
+
+.haveanAcount p a {
     color: var(--colorScheme);
     font-weight: 600;
     text-decoration: none;
 }
-.haveanAcount p a:hover
-{
+
+.haveanAcount p a:hover {
     color: var(--colorScheme);
     font-weight: 600;
     text-decoration: underline;
 }
 
-@media screen and (max-width: 1000px)
-{
-    .containerlogin
-    {
-       width: 100%;
-       height: 100vh;
-         display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 3rem;
-    }
-    .page1{
+@media screen and (max-width: 1000px) {
+    .containerlogin {
         width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 0rem;
-    /* border: 1px solid red; */
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
     }
-    .page1 h1{
+
+    .page1 {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 0rem;
+        /* border: 1px solid red; */
+    }
+
+    .page1 h1 {
         font-size: 3rem;
         border-bottom: 3px solid var(--colorScheme);
     }
-    .page1 p 
-    {
+
+    .page1 p {
         display: none;
-    }.page2
-    {
+    }
+
+    .page2 {
         /* border: 1px solid red; */
         /* padding: 0; */
         height: auto;
     }
-    .page2 .loginform
-    {
+
+    .page2 .loginform {
         width: 100%;
         height: auto;
     }
-    .page2 .loginform p 
-    {
+
+    .page2 .loginform p {
         font-size: 0.8rem;
     }
-    .page2 .loginform h2{
+
+    .page2 .loginform h2 {
         margin: 1rem 0 0.5 0;
         font-size: 1.5rem;
-    
+
     }
-    .page2 .loginform .inputfield
-    {
+
+    .page2 .loginform .inputfield {
         width: 80%;
     }
-    .page2 .loginform .inputfield p{
+
+    .page2 .loginform .inputfield p {
         font-size: 0.9rem;
         font-weight: 600;
     }
-    .page2 .loginform .submitbtn
-    {
+
+    .page2 .loginform .submitbtn {
         width: 80%;
     }
-    .page2 .difauth
-    {
+
+    .page2 .difauth {
         width: 80%;
     }
-    .page2 .difauth button
-    {
+
+    .page2 .difauth button {
         width: 70%;
+    }
+
+    .haveanAcount p {
+        width: 80%;
+
     }
 }
