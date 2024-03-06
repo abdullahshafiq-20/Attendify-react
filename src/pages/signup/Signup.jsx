@@ -10,7 +10,7 @@ import {
 import { auth, provider } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
-export const Signup = () => {
+export const Signup = ( {onSignup }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +24,9 @@ export const Signup = () => {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        const userdata= {name, email, password}
+        console.log(userdata);
+        onSignup(userdata);
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
@@ -47,6 +50,7 @@ export const Signup = () => {
         // Signed up
         const user = userCredential.user;
         console.log(user, "user");
+        
         navigate("/");
       })
       .catch((error) => {

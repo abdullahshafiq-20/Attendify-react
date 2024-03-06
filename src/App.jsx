@@ -7,13 +7,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 
 function App() {
+  const [response, setResponse] = useState({});
+  
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login setResponse={setResponse}/>} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Dashboard" element={<Dashboard response={response} />} />
         </Routes>
       </Router>
     </>

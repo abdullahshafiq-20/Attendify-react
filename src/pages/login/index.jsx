@@ -11,11 +11,14 @@ import {
 import { auth, provider } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
-export const Login = () => {
+
+export const Login = ({setResponse}) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(""); 
   const navigate = useNavigate();
 
+  
+  
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -26,6 +29,7 @@ export const Login = () => {
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
+        setResponse(user);        
         navigate("/Dashboard");
       })
       .catch((error) => {
@@ -52,6 +56,7 @@ export const Login = () => {
         // Signed in
         const user = userCredential.user;
         console.log("dasboard page", user);
+        setResponse(user);
         navigate("/Dashboard");
         // ...
       })

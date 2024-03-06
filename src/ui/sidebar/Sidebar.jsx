@@ -1,14 +1,16 @@
-import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react";
-import { createContext, useContext, useState } from "react";
+import { ChevronFirst, ChevronLast, Construction, MoreVertical } from "lucide-react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const SidebarContext = createContext();
 
-export default function Sidebar({ children }) {
+export default function Sidebar({ children, user}) {
   const [expanded, setExpanded] = useState(true);
+
+
   return (
     <>
       <aside className="h-screen">
-        <nav className="h-full flex flex-col bg-bgcolor border border-borderColr shadow-sm">
+        <nav className="h-full flex flex-col bg-bgcolor border-r border-borderColr shadow-sm">
           <div className="p-4 pb-2 flex justify-between items-center">
             <img
               src=""
@@ -28,17 +30,17 @@ export default function Sidebar({ children }) {
             <ul className="flex-1 px-3">{children}</ul>
           </SidebarContext.Provider>
 
-          <div className="border-t flex p-3">
-            <img src="" className="w-10 h-10 rounded-md" />
+          <div className="border-t border-borderColr flex p-3">
+            <img src={user.photoURL} className="w-10 h-10 rounded-md" />
             <div
               className={`flex justify-between items-center overflow-hidden transition-all ${
                 expanded ? "w-52 ml-3" : "w-0"
               } `}
             >
               <div className="leading-4">
-                <h4 className="font-semibold">constGenius</h4>
-                <span className="text-xs text-gray-600">
-                  constgenius@gmail.com
+                <h4 className="font-semibold">{user.displayName}</h4>
+                <span className="text-xs text-textColor font-bold">
+                  {user.email}
                 </span>
               </div>
               <MoreVertical size={20} />
