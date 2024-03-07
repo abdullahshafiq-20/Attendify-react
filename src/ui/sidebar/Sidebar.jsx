@@ -6,7 +6,8 @@ import {
 } from "lucide-react";
 import { createContext, useContext, useState, useEffect } from "react";
 import { FiLogOut } from "react-icons/fi";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useParams } from "react-router-dom";
+
 const SidebarContext = createContext();
 
 export default function Sidebar({ children, user }) {
@@ -54,9 +55,10 @@ export default function Sidebar({ children, user }) {
               </div>
               <RouterLink to="/">
                 <div className="mr-[5px] p-1.5 rounded-lg hover:bg-colorScheme flex justify-center items-center">
-                  <FiLogOut size={22} style={{ transform: "rotate(180deg)" }} 
-                  
-                  onClick={removeLocalStorage}
+                  <FiLogOut
+                    size={22}
+                    style={{ transform: "rotate(180deg)" }}
+                    onClick={removeLocalStorage}
                   />
                 </div>
               </RouterLink>
@@ -70,8 +72,16 @@ export default function Sidebar({ children, user }) {
 
 export function SidebarItem({ icon, text, active, alert }) {
   const { expanded } = useContext(SidebarContext);
+  let text2;
+  if (text === "Dashboard") {
+    text2 = "/";
+  } else {
+    text2 = `/${text}`;
+  }
+
   return (
-    <li
+   <RouterLink to={text2}>
+     <li
       className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
         active
           ? "bg-hoverColor from-indigo-200 to-indigo-100 text-indigo-800"
@@ -85,6 +95,7 @@ export function SidebarItem({ icon, text, active, alert }) {
         }`}
       >
         {text}
+      
       </span>
       {alert && (
         <div
@@ -102,5 +113,7 @@ export function SidebarItem({ icon, text, active, alert }) {
         </div>
       )}
     </li>
+
+   </RouterLink>
   );
 }
