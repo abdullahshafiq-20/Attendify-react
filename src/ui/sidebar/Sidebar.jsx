@@ -73,12 +73,12 @@ export default function Sidebar({ children, user }) {
 export function SidebarItem({ icon, text, active, alert }) {
   const { expanded } = useContext(SidebarContext);
   let text2;
-  if (text === "Dashboard") {
-    text2 = "/";
-  } else {
-    text2 = `/${text}`;
-  }
 
+  function Slash(text)
+  {
+    text2="/"+  text;
+  }
+  Slash(text);
   return (
    <RouterLink to={text2}>
      <li

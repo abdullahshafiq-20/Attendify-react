@@ -14,7 +14,7 @@ import Sidebar, { SidebarItem } from "../../ui/sidebar/Sidebar";
 import { Route } from "react-router-dom";
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 
-export const Dashboard = ({ response }) => {
+export const Marks = ({ response }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -40,10 +40,9 @@ export const Dashboard = ({ response }) => {
           <SidebarItem
             icon={<LayoutDashboard size={20} />}
             text="Dashboard"
-            active
           />
-          <SidebarItem icon={<StickyNote size={20} />} text="Attendence" alert />
-          <SidebarItem icon={<Calendar size={20} />} text="Marks" />
+          <SidebarItem icon={<StickyNote size={20} />} text="Attendence"/>
+          <SidebarItem icon={<Calendar size={20} />} text="Marks" active />
           <SidebarItem icon={<Layers size={20} />} text="Tasks" />
           <SidebarItem icon={<Flag size={20} />} text="Reporting" />
           <hr className="my-3 " />

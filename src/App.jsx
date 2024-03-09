@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Slide, ToastContainer } from "react-toastify";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
-import { Home2 } from "./pages/Home/Home2";
-import { Projects } from "./pages/Projects/Projects";
+import { Attendence } from "./pages/Attendence/Attendence";
+import { Marks } from "./pages/Marks/Marks";
 
 function App() {
   const [response, setResponse] = useState({});
@@ -20,8 +20,8 @@ function App() {
           <Route path="/" element={<Login setResponse={setResponse}/>} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Dashboard" element={<Dashboard response={response} />} />
-          <Route path="/Home" element={<Home2 />} />
-          <Route path="/Projects" element={<Projects />} />
+          <Route path="/Attendence" element={<Attendence setResponse={setResponse} />} />
+          <Route path="/Marks" element={<Marks />} />
 
         </Routes>
       </Router>
@@ -41,11 +41,6 @@ function App() {
         transition={Slide}
         
       />
-
-
-
-
-
     </>
   );
 }
