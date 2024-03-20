@@ -10,12 +10,12 @@ import {
   LifeBuoy,
   Settings,
 } from "lucide-react";
-import Sidebar, { SidebarItem } from "../../ui/sidebar/Sidebar";
+import Sidebar, { SidebarItem } from "../ui/sidebar/Sidebar";
 import { Route } from "react-router-dom";
 import { BrowserRouter as Router, Routes } from "react-router-dom";
-import styles from "./Dashboard.module.css";
+import styles from "./Portal.module.css";
 
-export const Dashboard = ({ response }) => {
+export const Portal = ({ response }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -40,23 +40,19 @@ export const Dashboard = ({ response }) => {
         <Sidebar user={user}>
           <SidebarItem
             icon={<LayoutDashboard size={20} />}
-            text="Dashboard"
+            text="lorem"
             active
           />
-          <SidebarItem
-            icon={<StickyNote size={20} />}
-            text="NewStudent"
-            alert
-          />
-          <SidebarItem icon={<Calendar size={20} />} text="All Students" />
+          <SidebarItem icon={<StickyNote size={20} />} text="lorem" alert />
+          {/* <SidebarItem icon={<Calendar size={20} />} text="All Students" /> */}
           {/* <SidebarItem icon={<Layers size={20} />} text="Tasks" />
           <SidebarItem icon={<Flag size={20} />} text="Reporting" />
           <hr className="my-3 " />
           <SidebarItem icon={<Settings size={20} />} text="Settings" />
           <SidebarItem icon={<LifeBuoy size={20} />} text="Help" /> */}
         </Sidebar>
-        <div className={styles.dashboard}>
-          <h1>DashBoard</h1>
+        <div>
+          <h1>Portal</h1>
         </div>
       </div>
     </>

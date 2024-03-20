@@ -14,6 +14,7 @@ export default function Sidebar({ children, user }) {
   const [expanded, setExpanded] = useState(true);
 
   const removeLocalStorage = () => {
+    window.localStorage.removeItem("uid");
     window.localStorage.removeItem("user");
   };
 
@@ -41,7 +42,7 @@ export default function Sidebar({ children, user }) {
           </SidebarContext.Provider>
 
           <div className="border-t border-borderColr flex p-3">
-            <img src={user.photoURL} className="w-10 h-10 rounded-md" />
+            <img src={user.imageURL} className="w-10 h-10 rounded-md" />
             <div
               className={`flex justify-between items-center overflow-hidden transition-all ${
                 expanded ? "w-52 ml-3" : "w-0"
@@ -74,46 +75,43 @@ export function SidebarItem({ icon, text, active, alert }) {
   const { expanded } = useContext(SidebarContext);
   let text2;
 
-  function Slash(text)
-  {
-    text2="/"+  text;
+  function Slash(text) {
+    text2 = "/" + text;
   }
   Slash(text);
   return (
-   <RouterLink to={text2}>
-     <li
-      className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
-        active
-          ? "bg-hoverColor from-indigo-200 to-indigo-100 text-indigo-800"
-          : "hover:bg-colorScheme text-gray-600"
-      }`}
-    >
-      {icon}
-      <span
-        className={`overflow-hidden transition-all ${
-          expanded ? "w-52 ml-3" : "w-0"
+    <RouterLink to={text2}>
+      <li
+        className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
+          active
+            ? "bg-hoverColor from-indigo-200 to-indigo-100 text-indigo-800"
+            : "hover:bg-colorScheme text-gray-600"
         }`}
       >
-        {text}
-      
-      </span>
-      {alert && (
-        <div
-          className={`absolute right-2 w-2 h-2 rounded ${
-            expanded ? "" : "top-2"
+        {icon}
+        <span
+          className={`overflow-hidden transition-all ${
+            expanded ? "w-52 ml-3" : "w-0"
           }`}
-        ></div>
-      )}
-
-      {!expanded && (
-        <div
-          className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
         >
           {text}
-        </div>
-      )}
-    </li>
+        </span>
+        {alert && (
+          <div
+            className={`absolute right-2 w-2 h-2 rounded ${
+              expanded ? "" : "top-2"
+            }`}
+          ></div>
+        )}
 
-   </RouterLink>
+        {!expanded && (
+          <div
+            className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+          >
+            {text}
+          </div>
+        )}
+      </li>
+    </RouterLink>
   );
 }

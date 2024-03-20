@@ -1,0 +1,97 @@
+.container {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #535353; */
+    flex-direction: column;
+    /* padding-top: 4rem; */
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    padding: 1rem 1rem;
+    margin-top: 1rem;
+
+}
+
+.nav {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* border: 1px solid red; */
+    flex-direction: column;
+    padding: 1rem 1rem;
+    /* text-align: left; */
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: var(--borderColr);
+    margin: 0;
+
+}
+
+.nav h1 {
+    font-size: 2rem;
+    color: white;
+    margin: 0;
+    font-weight: 700;
+}
+
+.record {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem 1rem;
+    /* border: 1px solid red; */
+    /* margin-top: 0rem; */
+}
+
+/* CSS */
+.record table {
+    width: 100%;
+    border-collapse: collapse;
+    /* padding: 1rem 1rem; */
+}
+
+.record th{
+    /* padding: 8px; */
+    /* border: 1px solid var(--borderColr); */
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-align: left;
+    padding: 1rem 0;
+    text-decoration: underline;
+}
+.record td{
+    /* border: 1px solid var(--borderColr); */
+    border-radius: 5px;
+    padding: 0.7rem 0;
+
+
+
+}
+.record td img
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+
+}
+
+.record th {
+    /* background-color: #f2f2f2; */
+}

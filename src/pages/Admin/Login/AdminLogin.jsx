@@ -8,13 +8,13 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { auth, provider } from "../../firebase";
+import { auth, provider,db } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
-import { Toast } from "../../utils/Toast";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { Toast } from "../../../utils/Toast";
+import { addDoc, collection, doc, setDoc, getDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export const Login = ({ setResponse }) => {
+export const AdminLogin = ({ setResponse }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -47,55 +47,76 @@ export const Login = ({ setResponse }) => {
       });
   };
 
-  const loginHandler = (event) => {
-    event.preventDefault();
-
-    if (!email || !password) {
-      console.log("required field are missing");
-      return;
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted with data:", { email, password });
+   
     signInWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        const userID = userCredential.user.uid;
-        console.log(userID, "user");
-        const userData = await getDoc(doc(db, "users", userID));
-        console.log(userData.data(), "userData");
-        localStorage.setItem("uid", userID);
-        localStorage.setItem("user", JSON.stringify(userData.data()));
-        Toast("User login", "success");
-        if (userData.type == "admin") {
-          navigate("/dashboard");
-        } else {
-          navigate("/portal");
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        Toast(errorCode, "error");
-      });
+    .then(async (userCredential) => {
+      const userID = userCredential.user.uid;
+      console.log(userID, "user")
+      const userData = await getDoc(doc(db, "users", userID))
+      console.log(userData.data(), "userData")
+      localStorage.setItem("uid", userID);
+      localStorage.setItem("user", JSON.stringify(userData.data()));
+      Toast("user login", "success");
+      if (userData.type == "admin") {
+        navigate("/dashboard");
+      } else {
+        navigate("/portal");
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Toast(errorCode, "error");
+    });
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then(async (userCredential) => {
+    //     // Signed up
+    //     const user = userCredential.user;
+    //     console.log(user.uid, "user");
+    //     const obj = {
+    //       name: "Super Admin",
+    //       email,
+    //       password,
+    //       type: "admin", //admin | std
+    //     };
+
+    //     const createUser = await setDoc(doc(db, "users", user.uid), obj);
+
+    //     console.log("createUser", createUser);
+
+    //     // ToastAlert("Successfully signup", "success");
+    //     // navigate("/");
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     Toast(errorMessage, "error");
+    //     // ..
+    //   });
+
+    // console.log("email,password", email, password);
+    setEmail("");
+    setPassword("");
   };
   return (
     <>
       <div className={styles.containerlogin}>
-        <div className={styles.page1}>
-          <h1>Attendify.</h1>
-          <p>
-            Count your students In, <br />
-            Not out.
-          </p>
-        </div>
         <div className={styles.page2}>
           <div className={styles.loginform}>
-            <h2>Login to your account</h2>
-            <p>Enter email below to login to your account</p>
+            <h2>
+              Hello, <span>Attendify</span> Admin
+            </h2>
+            <p>Enter your information below to login your account</p>
             <div className={styles.difauth}>
               <button onClick={handleGoogleSignIn}>
                 <FaGoogle />
                 Continue with Google
               </button>
             </div>
-            <form onSubmit={loginHandler}>
+            <form onSubmit={handleSubmit}>
               <div className={styles.inputfield}>
                 <p>Email</p>
                 <input
@@ -120,7 +141,7 @@ export const Login = ({ setResponse }) => {
 
             <div className={styles.haveanAcount}>
               <p>
-                Are you Admin ? <RouterLink to="/adminlogin">Login</RouterLink>
+                Are you student ? <RouterLink to="/">Login</RouterLink>
               </p>
             </div>
           </div>
