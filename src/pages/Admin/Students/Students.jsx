@@ -1,21 +1,31 @@
-import React from "react";
-import { useState, useEffect, onRefresh } from "react";
-import {
-  LayoutDashboard,
-  Home,
-  StickyNote,
-  Layers,
-  Flag,
-  Calendar,
-  LifeBuoy,
-  Settings,
-} from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { db } from "../../../firebase"; // Import your Firebase configuration
+import { getDocs, collection } from "firebase/firestore";
+import { LayoutDashboard, StickyNote, Calendar } from "lucide-react";
 import Sidebar, { SidebarItem } from "../../../ui/sidebar/Sidebar";
+
 
 import styles from "./Students.module.css";
 
 export const Students = ({ response }) => {
   const [user, setUser] = useState({});
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from Firestore
+    const fetchData = async () => {
+      const studentsCollection = collection(db, "users");
+      const data = await getDocs(studentsCollection);
+      const fetchedStudents = data.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setStudents(fetchedStudents);
+    };
+
+    fetchData();
+  }, []);
+
   useEffect(() => {
     // Check if user data exists in local storage
     const data = window.localStorage.getItem("user");
@@ -29,6 +39,7 @@ export const Students = ({ response }) => {
       window.localStorage.setItem("user", JSON.stringify(response));
     }
   }, [response]);
+
   return (
     <>
       <div className="flex">
@@ -44,11 +55,6 @@ export const Students = ({ response }) => {
             text="AllStudents"
             active
           />
-          {/* <SidebarItem icon={<Layers size={20} />} text="Tasks" />
-          <SidebarItem icon={<Flag size={20} />} text="Reporting" />
-          <hr className="my-3 " />
-          <SidebarItem icon={<Settings size={20} />} text="Settings" />
-          <SidebarItem icon={<LifeBuoy size={20} />} text="Help" /> */}
         </Sidebar>
         <div className={styles.container}>
           <div className={styles.box}>
@@ -58,37 +64,28 @@ export const Students = ({ response }) => {
             </div>
             <div className={styles.record}>
               <table>
-                <tr>
-                  <th>Profile</th>
-                  <th>Name</th>
-                  <th>Course</th>
-                  <th>Email</th>
-                  <th>Password</th>
-                </tr>
-                <tr>
-                  <td>
-                    <img
-                      src="https://firebasestorage.googleapis.com/v0/b/blog-react-74910.appspot.com/o/images%2FAbdullah%20pic%20ps-rsized.png?alt=media&token=f7ec16bc-a119-4f2f-b635-5536ee58b7e5"
-                      alt=""
-                    />
-                  </td>
-                  <td>Abdullah Shafiq</td>
-                  <td>Web and app</td>
-                  <td>as053266@gmail.com</td>
-                  <td>1234567</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img
-                      src="https://firebasestorage.googleapis.com/v0/b/blog-react-74910.appspot.com/o/images%2FAbdullah%20pic%20ps-rsized.png?alt=media&token=f7ec16bc-a119-4f2f-b635-5536ee58b7e5"
-                      alt=""
-                    />
-                  </td>
-                  <td>Abdullah Shafiq</td>
-                  <td>Web and app</td>
-                  <td>as053266@gmail.com</td>
-                  <td>1234567</td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>Profile</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {students.map((student) => (
+                    <tr key={student.id}>
+                      <td>
+                        <img src={student.imageURL} alt="" />
+                      </td>
+                      <td>{student.name}</td>
+                      <td>{student.course}</td>
+                      <td>{student.email}</td>
+                      <td>{student.password}</td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>

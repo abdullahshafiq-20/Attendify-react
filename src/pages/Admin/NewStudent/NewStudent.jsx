@@ -21,7 +21,6 @@ import { auth, db } from "../../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { Toast } from "../../../utils/Toast";
 
-
 export const NewStudent = ({ response }) => {
   const [user, setUser] = useState({});
 
@@ -60,7 +59,7 @@ export const NewStudent = ({ response }) => {
 
   const handleAddStudent = async (e) => {
     try {
-        e.preventDefault(); 
+      e.preventDefault();
       // console.log("handleAddStd",
       //   fullname,
       //   course,
@@ -81,7 +80,16 @@ export const NewStudent = ({ response }) => {
       const userID = stdData.user.uid;
 
       // Image
-      const imageURL = await uploadFile(image);
+      // const imageURL = await uploadFile(image);
+      var imageURL;
+
+      if (image) {
+        imageURL = await uploadFile(image);
+      } else {
+        imageURL =
+          "https://firebasestorage.googleapis.com/v0/b/blog-react-74910.appspot.com/o/images%2Fgrad.png?alt=media&token=25b546a0-c171-4f9e-bbf6-4cc2f18b956c";
+        // If image is not selected, generate a random gradient and upload i;
+      }
 
       const obj = {
         email,
@@ -89,6 +97,7 @@ export const NewStudent = ({ response }) => {
         type: "std",
         course,
         imageURL,
+        password,
       };
 
       await setDoc(doc(db, "users", userID), obj);

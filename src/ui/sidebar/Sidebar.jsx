@@ -18,6 +18,10 @@ export default function Sidebar({ children, user }) {
     window.localStorage.removeItem("user");
   };
 
+  const [image, setImage] = useState("");
+   
+
+
   return (
     <>
       <aside className="h-screen">
